@@ -38,10 +38,12 @@
     "redux": "^4.0.0"
   },
   "dependencies": {
-    "redux": "^4.0.0",
     "@pinyin/maybe": "^0.0.7",
+    "@pinyin/react": "0.0.15",
     "@pinyin/redux": "^0.0.20",
     "@pinyin/types": "^0.0.22",
+    "hoist-non-react-statics": "^2.5.0",
+    "redux": "^4.0.0",
     "tslib": "^1.9.0"
   }
 }

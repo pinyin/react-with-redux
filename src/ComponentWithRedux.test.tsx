@@ -1,3 +1,4 @@
+import {NamedReducers} from '@pinyin/redux'
 import {nothing} from '@pinyin/types/dist/src/nothing'
 import * as React from 'react'
 import {create} from 'react-test-renderer'
@@ -6,11 +7,16 @@ import {ComponentWithRedux} from './ComponentWithRedux'
 describe(`${ComponentWithRedux.name}`, ()=> {
     class Component extends ComponentWithRedux<{}, {count: number}, {increase: nothing}> {
         constructor(props: {}) {
-            super(props, {count: 0}, {increase: state=> ({count: state.count + 1})})
+            super(props)
+            this.state = {count: 0}
         }
 
         render(){
             return this.state.count
+        }
+
+        protected reducers: NamedReducers<{ count: number }, { increase: nothing }> = {
+            increase: state => ({count: state.count + 1})
         }
     }
 

@@ -1,30 +1,26 @@
-import {Maybe} from '@pinyin/maybe'
-import {Action, combineNamedReducers, createDispatchersByShape, Dispatchers, NamedReducers} from '@pinyin/redux'
-import {nothing, something} from '@pinyin/types'
+import {combineNamedReducers, createDispatchersByShape, Dispatchers, NamedReducers} from '@pinyin/redux'
 import * as React from 'react'
-import {createStore, Store, StoreEnhancer, Unsubscribe} from 'redux'
+import {createStore, StoreEnhancer, Unsubscribe} from 'redux'
 
 export abstract class ComponentWithRedux<P = {}, S extends object = {}, A extends object = {}, SS = any>
     extends React.Component<P, S, SS> {
 
-    protected constructor(props: P,
-                          state: S,
-                          reducers: NamedReducers<S, A>,
-                          enhancer?: StoreEnhancer){
-        super(props)
+    private _storeUnsubscribe: Unsubscribe = {} as any
+
+    dispatch: Dispatchers<A> = {} as any // TODO
+
+    protected abstract reducers: NamedReducers<S, A>
+    protected enhancer?: StoreEnhancer
+
+    componentDidMount() {
+        const {state, reducers, enhancer} = this
 
         const store = createStore(combineNamedReducers(state, reducers), enhancer)
-
-        this.state = state
         this.dispatch = createDispatchersByShape(store, reducers)
         this._storeUnsubscribe = store.subscribe(()=>
             this.setState(store.getState())
         )
     }
-
-    readonly dispatch: Dispatchers<A>
-
-    private readonly _storeUnsubscribe: Unsubscribe
 
     componentWillUnmount() {
         this._storeUnsubscribe()
