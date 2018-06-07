@@ -11,8 +11,7 @@
   "sideEffects": false,
   "scripts": {
     "prepublishOnly": "rm -rf dist && npx tsc && npx jest",
-    "test": "npx jest",
-    "demo": "npx parcel --open --no-cache demo/index.html"
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
@@ -41,7 +40,6 @@
   "dependencies": {
     "redux": "^4.0.0",
     "@pinyin/maybe": "^0.0.7",
-    "@pinyin/react": "^0.0.15",
     "@pinyin/redux": "^0.0.20",
     "@pinyin/types": "^0.0.22",
     "tslib": "^1.9.0"

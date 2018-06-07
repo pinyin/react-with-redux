@@ -1,1 +1,1 @@
-export {ListView} from './src/ListView'
+export {ComponentWithRedux} from './src/ComponentWithRedux'
