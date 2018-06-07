@@ -1,0 +1,49 @@
+{
+  "name": "@pinyin/react-with-redux",
+  "version": "0.0.1",
+  "description": "React component with Redux store as state.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "rm -rf dist && npx tsc && npx jest",
+    "test": "npx jest",
+    "demo": "npx parcel --open --no-cache demo/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinyin/react-with-redux.git"
+  },
+  "keywords": [
+    "react",
+    "redux"
+  ],
+  "author": "Bo Bao <bob432091@gmail.com> (https://github.com/pinyin)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinyin/react-with-redux/issues"
+  },
+  "homepage": "https://github.com/pinyin/react-with-redux#readme",
+  "devDependencies": {
+    "@types/jest": "^23.0.0",
+    "jest": "^23.1.0",
+    "react": "^16.4.0",
+    "ts-jest": "^22.4.6",
+    "typescript": "^2.9.1",
+    "@types/react-test-renderer": "^16.0.1",
+    "react-test-renderer": "^16.4.0",
+    "redux": "^4.0.0"
+  },
+  "dependencies": {
+    "redux": "^4.0.0",
+    "@pinyin/maybe": "^0.0.7",
+    "@pinyin/react": "^0.0.15",
+    "@pinyin/redux": "^0.0.20",
+    "@pinyin/types": "^0.0.22",
+    "tslib": "^1.9.0"
+  }
+}
