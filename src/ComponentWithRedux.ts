@@ -4,8 +4,8 @@ import {nothing, something} from '@pinyin/types'
 import * as React from 'react'
 import {createStore, Store, StoreEnhancer, Unsubscribe} from 'redux'
 
-export abstract class ComponentWithRedux<P = {}, S extends object = {}, A extends object = {}>
-    extends React.Component<P, S> {
+export abstract class ComponentWithRedux<P = {}, S extends object = {}, A extends object = {}, SS = any>
+    extends React.Component<P, S, SS> {
 
     protected constructor(props: P,
                           state: S,
@@ -24,7 +24,7 @@ export abstract class ComponentWithRedux<P = {}, S extends object = {}, A extend
 
     readonly dispatch: Dispatchers<A>
 
-    private _storeUnsubscribe: Unsubscribe
+    private readonly _storeUnsubscribe: Unsubscribe
 
     componentWillUnmount() {
         this._storeUnsubscribe()
