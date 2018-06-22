@@ -165,11 +165,9 @@ Temporary Items
 dist
 **/dist/*
 src/**/*.js
-'package-lock.json' 
 
 .vscode
 .cache
 /report.html
 
 *.js
-/demo/dist/index/demo.929cac22.js
